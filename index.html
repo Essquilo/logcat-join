@@ -42,12 +42,20 @@
           <div class="input-group">
             <input type="text" class="form-control" id="regex-area" placeholder="Default: default regex"></input>
             <div class="input-group-append">
-              <button class="btn btn-outline-dark" type="button">Button</button>
+              <button class="btn btn-outline-dark" type="button" onclick="clearRegex()">Clear</button>
             </div>
           </div>
         </div>
       </form>
-    </div>
+		</div>
+
+			<div class="alert alert-warning alert-dismissible" style="display: none" role="alert">
+				<h4 id="alert-heading" class="alert-heading">Something went wrong!</h4>
+				<button type="button" class="close" aria-label="Close" onclick="hideAlert()">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<p id="alert-msg">Aww yeah, you successfully read this important alert message.</p>
+			</div>
 
     <div class="row">
       <div class="col-6">
@@ -72,7 +80,7 @@
   </div>
   <footer class="footer">
     <div class="container">
-      <p class="text-muted">Place sticky footer content here.</p>
+      <p class="text-muted">&copy; Ivan Prymak 2018</p>
     </div>
   </footer>
 </body>
