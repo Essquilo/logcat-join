@@ -1,38 +1,39 @@
-let defaultRegex = /^(\d{1,2}-\d{1,2} \d{2}:\d{2}:\d{2}\.\d{3} \d+-\d+\/[a-z][a-z0-9_]*(\.[a-z0-9_]+)+[0-9a-z_] (v|d|i|w|e|a)\/((.|\s)*?): )/i;
-$(document).ready(function() {
-	$("#regex-area").attr("placeholder", "Default: " + defaultRegex);
-	//$(".alert").alert('close');
+const defaultRegex = /^(.*[vdiwea]\/((.|\s)*?): )/i;
+$(document).ready(() => {
+    $('#regex-area').attr('placeholder', `Default: ${defaultRegex}`);
+    $('#btn-join').on('click', performJoin);
+    $('#btn-clear-regex').on('click', clearRegex);
+    $('#btn-close-alert').on('click', hideAlert);
 });
 
 function performJoin() {
-	let input = $("#input-area").val();
-	let output = $("#output-area");
-	let regexText = $("#regex-area").val();
-	let regex = defaultRegex;
-	try {
-		if (regexText != "") {
-			let match = input.match(new RegExp('^/(.*?)/([gimyu]*)$'));
-			if (match == null || match.length() != 2) {
-				throw new SyntaxError("Malformed regex. Please, use JavaScript regex notation");
-			}
-			regex = RegExp(match[1], match[2]);
-		}
-		output.val(input.split("\n").reduce(function(prev, next) { return prev + next.replace(regex, "") }, ""));
-	} catch (e) {
-		showAlert(e.toString());
-		console.log(e);
-	}
+    const input = $('#input-area').val();
+    const output = $('#output-area');
+    const regexText = $('#regex-area').val();
+    let regex = defaultRegex;
+    try {
+        if (regexText !== '') {
+            const match = regexText.match(/^\/(.*?)\/([gimyu]*)$/);
+            if (match == null || match.length !== 3) {
+                throw new SyntaxError('Malformed regex. Please, use JavaScript regex notation');
+            }
+            regex = RegExp(match[1], match[2]);
+        }
+        output.val(input.split('\n').reduce((prev, next) => prev + next.replace(regex, ''), ''));
+    } catch (e) {
+        showAlert(e.toString());
+    }
 }
 
 function clearRegex() {
-	$("#regex-area").val("");
+    $('#regex-area').val('');
 }
 
 function showAlert(msg) {
-	$("#alert-msg").text(msg);
-	$(".alert").show();
+    $('#alert-msg').text(msg);
+    $('.alert').show();
 }
 
 function hideAlert() {
-	$(".alert").hide();
+    $('.alert').hide();
 }

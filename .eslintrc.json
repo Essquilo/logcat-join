@@ -1,0 +1,25 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true,
+        "jquery": true
+    },
+    "extends": "airbnb-base",
+    "globals": {
+        "Atomics": "readable",
+        "SharedArrayBuffer": "readable"
+    },
+    "parserOptions": {
+        "ecmaVersion": 2015
+    },
+    "rules": {
+        "indent": [2, 4],
+        "linebreak-style": "off",
+        "no-multiple-empty-lines": [2, {"max": 1, "maxEOF": 0, "maxBOF": 0 }],
+        "no-use-before-define": [2, { "functions": false }],
+        "complexity": [1, 5]
+    },
+    "plugins": [
+        "eslint-plugin-html"
+    ]
+}

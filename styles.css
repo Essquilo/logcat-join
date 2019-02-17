@@ -38,14 +38,14 @@ body {
   text-align: center;
 }
 
-#join {
-  margin-top: 10px;
-  float: right;
-}
-
 .btn {
   padding-left: 25px;
   padding-right: 25px;
+}
+
+.btn-join {
+  margin-top: 10px;
+  float: right;
 }
 
 code {
